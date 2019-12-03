@@ -1,2 +1,2 @@
-# topsis
+# Topsis
 TOPSIS
