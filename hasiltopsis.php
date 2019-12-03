@@ -53,9 +53,9 @@
 	$act6='';
   }
   ?>
-  <li <?php echo $act1; ?> ><a href="index.php?a=hasiltopsis&k=nilai_matriks">Nilai Matriks</a></li>
+  <li <?php echo $act1; ?> ><a href="index.php?a=hasiltopsis&k=nilai_matriks">Nilai Peserta</a></li>
   
-  <li <?php echo $act2; ?>><a href="index.php?a=hasiltopsis&k=nilai_matriks_normalisasi">Nilai Matriks Ternormalisasi</a></li>
+  <li <?php echo $act2; ?>><a href="index.php?a=hasiltopsis&k=nilai_matriks_normalisasi">Nilai Peserta Ternormalisasi</a></li>
   
   <li <?php echo $act3; ?>><a href="index.php?a=hasiltopsis&k=nilai_bobot_normalisasi">Nilai Bobot Ternormalisasi</a></li>
   

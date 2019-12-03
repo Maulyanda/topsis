@@ -1,11 +1,11 @@
 <?php
 include ("konfig/koneksi.php");
-$s=mysql_query("delete from kriteria where id_kriteria='$_GET[id]'");
+$s=mysql_query("delete from kegiatan where id_kegiatan='$_GET[id]'");
 
 if($s){
-	echo "<script>window.open('index.php?a=kriteria&k=kriteria','_self');</script>";
+	echo "<script>window.open('index.php?a=kegiatan&k=kegiatan','_self');</script>";
 }else{
- echo $a="delete from kriteria where id_kriteria='$_GET[id]'";
+ echo $a="delete from kegiatan where id_kegiatan='$_GET[id]'";
 }
 
 ?>

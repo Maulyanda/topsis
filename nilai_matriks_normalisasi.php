@@ -1,13 +1,13 @@
 <?php
 include ("konfig/koneksi.php");
-$s=mysql_query("select * from kriteria");
+$s=mysql_query("select * from kegiatan");
 $h=mysql_num_rows($s);
 
 
 ?>
 
 <div class="box-header">
-    <h3 class="box-title " >Nilai Matriks Ternormalisasi</h3>
+    <h3 class="box-title " >Nilai peserta ternormalisasi</h3>
 </div>
 
 <table class="table table-bordered table-responsive">
@@ -15,7 +15,7 @@ $h=mysql_num_rows($s);
 <tr>
 <th rowspan="2">No</th>
 <th rowspan="2">Nama</th>
-<th colspan="<?php echo $h; ?>">Kriteria</th>
+<th colspan="<?php echo $h; ?>">kegiatan</th>
 </tr>
 <tr>
 <?php
@@ -28,7 +28,7 @@ for($n=1;$n<=$h;$n++){
 <tbody>
 <?php
 $i=0;
-$a=mysql_query("select * from alternatif");
+$a=mysql_query("select * from peserta");
 
 
 
@@ -37,20 +37,20 @@ while($da=mysql_fetch_assoc($a)){
 
 	echo "<tr>
 		<td>".(++$i)."</td>
-		<td>$da[nm_alternatif]</td>";
-		$idalt=$da['id_alternatif'];
+		<td>$da[nm_peserta]</td>";
+		$idalt=$da['id_peserta'];
 	
 		//ambil nilai
 			
-			$n=mysql_query("select * from nilai_matrik where id_alternatif='$idalt'");
+			$n=mysql_query("select * from nilai_matrik where id_peserta='$idalt'");
 	
 		while($dn=mysql_fetch_assoc($n)){
-			$idk=$dn['id_kriteria'];
+			$idk=$dn['id_kegiatan'];
 			
 			//nilai kuadrat
 			
 			$nilai_kuadrat=0;
-			$k=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
+			$k=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
 			while($dkuadrat=mysql_fetch_assoc($k)){
 				$nilai_kuadrat=$nilai_kuadrat+($dkuadrat['nilai']*$dkuadrat['nilai']);
 			}	

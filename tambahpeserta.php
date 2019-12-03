@@ -3,7 +3,7 @@
 include ("konfig/koneksi.php");
 
 
-$query = "SELECT max(id_alternatif) as idMaks FROM alternatif";
+$query = "SELECT max(id_peserta) as idMaks FROM peserta";
 $hasil = mysql_query($query);
 $data  = mysql_fetch_array($hasil);
 $nim = $data['idMaks'];
@@ -20,15 +20,16 @@ $IDbaru = $char . sprintf("%03s", $noUrut);
 
 ?>
 <div class="box-header">
-    <h3 class="box-title">Tambah Alternatif</h3>
+    <h3 class="box-title">Tambah peserta</h3>
 </div>
 
 <div class="box-body pad">
  <form action="" method="POST">
- 
- <input type="text" name="id_alternatif" class="form-control" value="<?php echo $IDbaru; ?>" readonly>
+ <label>ID</label>
+ <input type="text" name="id_peserta" class="form-control" value="<?php echo $IDbaru; ?>" readonly>
  <br />
- <input type="text" name="nama_alternatif" class="form-control"  placeholder="Nama Kriteria" >
+ <label>Nama</label>
+ <input type="text" name="nama_peserta" class="form-control"  placeholder="Masukkan nama peserta" >
  <br />
  <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
  <br />
@@ -36,10 +37,10 @@ $IDbaru = $char . sprintf("%03s", $noUrut);
 </div>
 <?php
 if(isset($_POST['simpan'])){
-	$s=mysql_query("insert into alternatif (id_alternatif,nm_alternatif) values('$_POST[id_alternatif]','$_POST[nama_alternatif]')");
+	$s=mysql_query("insert into peserta (id_peserta,nm_peserta) values('$_POST[id_peserta]','$_POST[nama_peserta]')");
 	
 	if($s){
-		echo "<script>alert('Disimpan'); window.open('index.php?a=alternatif&k=alternatif','_self');</script>";
+		echo "<script>alert('Disimpan'); window.open('index.php?a=peserta&k=peserta','_self');</script>";
 	}
 }
 

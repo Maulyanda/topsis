@@ -20,48 +20,48 @@ include ("konfig/koneksi.php");
 <tbody>
 <?php
 $i=1;
-$a=mysql_query("select * from alternatif");
+$a=mysql_query("select * from peserta");
 echo "<tr>";
 $sortir=array();
 while($da=mysql_fetch_assoc($a)){
 
 	
 		
-		$idalt=$da['id_alternatif'];
+		$idalt=$da['id_peserta'];
 	
 		//ambil nilai
 			
-			$n=mysql_query("select * from nilai_matrik where id_alternatif='$idalt'");
+			$n=mysql_query("select * from nilai_matrik where id_peserta='$idalt'");
 		
 		$c=0;
 		$ymax=array();
 		while($dn=mysql_fetch_assoc($n)){
-			$idk=$dn['id_kriteria'];
+			$idk=$dn['id_kegiatan'];
 			
 			
 			//nilai kuadrat
 			
 			$nilai_kuadrat=0;
-			$k=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
+			$k=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
 			while($dkuadrat=mysql_fetch_assoc($k)){
 				$nilai_kuadrat=$nilai_kuadrat+($dkuadrat['nilai']*$dkuadrat['nilai']);
 			}
 
-			//hitung jml alternatif
-			$jml_alternatif=mysql_query("select * from alternatif");
-			$jml_a=mysql_num_rows($jml_alternatif);	
-			//nilai bobot kriteria (rata")
+			//hitung jml peserta
+			$jml_peserta=mysql_query("select * from peserta");
+			$jml_a=mysql_num_rows($jml_peserta);	
+			//nilai bobot kegiatan (rata")
 			$bobot=0;
 			$tnilai=0;
 			
-			$k2=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
+			$k2=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
 			while($dbobot=mysql_fetch_assoc($k2)){
 				$tnilai=$tnilai+$dbobot['nilai'];
 			}	
 			 $bobot=$tnilai/$jml_a;
 			
 			//nilai bobot input
-			$b2=mysql_query("select * from kriteria where id_kriteria='$idk'");
+			$b2=mysql_query("select * from kegiatan where id_kegiatan='$idk'");
 			$nbot=mysql_fetch_assoc($b2);
 			$bot=$nbot['bobot'];
 			
@@ -84,8 +84,8 @@ foreach($_SESSION['dplus'] as $key=>$dxmin){
 	$jarakm=$_SESSION['dmin'][$key];
 	$id_alt=$_SESSION['id_alt'][$key];
 	
-	//nama alternatif
-	$nama=mysql_query("select * from alternatif where id_alternatif='$id_alt'");
+	//nama peserta
+	$nama=mysql_query("select * from peserta where id_peserta='$id_alt'");
 	$nm=mysql_fetch_assoc($nama);
 	
 	$nilaid=$jarakm/($jarakm+$dxmin);
@@ -95,8 +95,8 @@ foreach($_SESSION['dplus'] as $key=>$dxmin){
 		
 	
 	//simpan ke tabel nilai preferensi
-	$nm=$nm['nm_alternatif'];
-	$sql2=mysql_query("insert into nilai_preferensi (nm_alternatif,nilai) values('$nm','$nilai')");
+	$nm=$nm['nm_peserta'];
+	$sql2=mysql_query("insert into nilai_preferensi (nm_peserta,nilai) values('$nm','$nilai')");
 		
 	
 }
@@ -107,7 +107,7 @@ foreach($_SESSION['dplus'] as $key=>$dxmin){
 	while($data3=mysql_fetch_assoc($sql3)){
 		echo "<tr>
 		<td>".$i."</td>
-		<td>$data3[nm_alternatif]</td>
+		<td>$data3[nm_peserta]</td>
 		<td>$data3[nilai]</td>
 		</tr>";
 		
