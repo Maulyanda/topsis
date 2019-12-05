@@ -10,6 +10,22 @@
 </head>
 <body>
 
+<?php
+include 'konfig/koneksi.php';
+ 
+// mengaktifkan session
+session_start();
+ 
+// cek apakah user telah login, jika belum login maka di alihkan ke halaman login
+if($_SESSION['status'] !="login"){
+	header("location:../index.php");
+}
+ 
+// menampilkan pesan selamat datang
+
+ 
+?>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -30,18 +46,33 @@
     </ul>
 	-->
 	
-	
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li class="active"><a href="#"><?php echo "Hai, selamat datang ". $_SESSION['username'];?></li></a></li>
+      <li><a href="logout.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
     </ul>
   </div>
 </nav>
  <?php
-if(@$_GET['a']=='hasiltopsis'){
+if(@$_GET['a']=='kegiatan'){
 	$active1='class="active"';
 	$active2='';
 	$active3='';
 	$active4='';
+}else if(@$_GET['a']=='peserta'){
+	$active1='';
+	$active2='class="active"';
+	$active3='';
+	$active4='';
+}else if(@$_GET['a']=='nilaimatrik'){
+	$active1='';
+	$active2='';
+	$active3='class="active"';
+	$active4='';
+}else if(@$_GET['a']=='hasiltopsis'){
+	$active1='';
+	$active2='';
+	$active3='';
+	$active4='class="active"';
 }else{
 	$active1='';
 	$active2='';
@@ -54,8 +85,11 @@ if(@$_GET['a']=='hasiltopsis'){
 <!-- TAB KIRI -->
 <div class="col-sm-2">
 <ul class="nav nav-pills nav-stacked">
-  <li class="active"><a href="index.php">Home</a></li>
-  <li <?php echo $active2 ?>><a href="?a=hasiltopsis&k=nilai_matriks">Hasil Topsis</a></li>
+  <li class="active"><a href="index.php">Home</a></li> 
+  <li <?php echo $active1 ?>><a href="?a=kegiatan&k=kegiatan" >Kegiatan</a></li>
+  <li <?php echo $active2 ?>><a href="?a=peserta&k=peserta" >Peserta</a></li>
+  <li <?php echo $active3 ?>><a href="?a=nilaimatrik" >Nilai Peserta</a></li>
+  <li <?php echo $active4 ?>><a href="?a=hasiltopsis&k=nilai_matriks">Hasil Topsis</a></li>
 </ul>  
 </div>
 <!-- /TAB KIRI -->  
@@ -65,7 +99,13 @@ if(@$_GET['a']=='hasiltopsis'){
   <div class="col-sm-10">
  <?php
  
- if(@$_GET['a']=='hasiltopsis'){
+ if(@$_GET['a']=='kegiatan'){
+	include ("kegiatan.php");
+ }else if(@$_GET['a']=='peserta'){
+	include ("peserta.php");
+ }else if(@$_GET['a']=='nilaimatrik'){
+	include ("nilaimatrik.php");
+ }else if(@$_GET['a']=='hasiltopsis'){
 	include ("hasiltopsis.php");
  }
 
