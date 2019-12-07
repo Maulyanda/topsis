@@ -1,5 +1,6 @@
 <?php 
-include 'konfig/koneksi.php';
+include 'controllers/topsis.php';
+$db = new topsis();
  
 $username = $_POST['username'];
 $password = md5($_POST['password']);
@@ -11,7 +12,7 @@ if($cek > 0){
 	session_start();
 	$_SESSION['username'] = $username;
 	$_SESSION['status'] = "login";
-	header("location:admin/index.php");
+	header("location:views/admin/index.php");
 }else{
 	header("location:index.php");	
 }
