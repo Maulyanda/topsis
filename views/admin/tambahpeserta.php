@@ -30,13 +30,16 @@ $IDbaru = $char . sprintf("%03s", $noUrut);
  <label>Nama</label>
  <input type="text" name="nama_peserta" class="form-control"  placeholder="Masukkan nama peserta" >
  <br />
+ <label>Judul Kegiatan</label>
+ <input type="text" name="judul" class="form-control"  placeholder="Masukkan judul kegiatan" >
+ <br />
  <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
  <br />
  </form>
 </div>
 <?php
 if(isset($_POST['simpan'])){
-	$s=mysql_query("insert into peserta (id_peserta,nm_peserta) values('$_POST[id_peserta]','$_POST[nama_peserta]')");
+	$s=mysql_query("insert into peserta (id_peserta,nm_peserta,judul) values('$_POST[id_peserta]','$_POST[nama_peserta]','$_POST[judul]')");
 	
 	if($s){
 		echo "<script>alert('Disimpan'); window.open('index.php?a=peserta&k=peserta','_self');</script>";

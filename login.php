@@ -23,7 +23,7 @@
 			</div>			
 			<div>
 				<input type="submit" value="Login" class="tombol">
-				<a href="index.php" class="btn btn-info" role="button">Kembali</a>
+				<a href="index.php?a=home" class="btn btn-info" role="button">Kembali</a>
 			</div>
 
 			<?php 

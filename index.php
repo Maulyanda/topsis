@@ -38,7 +38,7 @@ if(@$_GET['a']=='hasiltopsis'){
 <!-- TAB KIRI -->
 <div class="col-sm-2">
 <ul class="nav nav-pills nav-stacked">
-  <li class="active"><a href="index.php">Home</a></li>
+  <li class="active"><a href="?a=home">Home</a></li>
   <li <?php echo $active2 ?>><a href="?a=hasiltopsis&k=nilai_matriks">Hasil Topsis</a></li>
 </ul>  
 </div>
@@ -48,10 +48,11 @@ if(@$_GET['a']=='hasiltopsis'){
 
   <div class="col-sm-10">
  <?php
- 
- if(@$_GET['a']=='hasiltopsis'){
-	include ("views/hasiltopsis.php");
- }
+  if(@$_GET['a']=='home'){
+    include ("views/home.php");
+  }else if(@$_GET['a']=='hasiltopsis'){
+	  include ("views/hasiltopsis.php");
+  }
 
  ?>
 

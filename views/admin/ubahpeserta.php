@@ -17,13 +17,16 @@ $d=mysql_fetch_assoc($s);
  <label>Nama</label>
  <input type="text" name="nama_peserta" class="form-control"  placeholder="Masukkan nama peserta" value="<?php echo $d['nm_peserta']; ?>">
  <br />
+ <label>Judul Kegiatan</label>
+ <input type="text" name="judul" class="form-control"  placeholder="Masukkan Judul Kegiatan" value="<?php echo $d['judul']; ?>">
+ <br />
  <input type="submit" name="ubah" value="Ubah" class="btn btn-primary">
  <br />
  </form>
 </div>
 <?php
 if(isset($_POST['ubah'])){
-	$s=mysql_query("update peserta set nm_peserta='$_POST[nama_peserta]' where id_peserta='$_POST[id_peserta]'");
+	$s=mysql_query("update peserta set nm_peserta='$_POST[nama_peserta]',judul='$_POST[judul]' where id_peserta='$_POST[id_peserta]'");
 	
 	if($s){
 		echo "<script>alert('Diubah'); window.open('index.php?a=peserta&k=peserta','_self');</script>";

@@ -1,6 +1,6 @@
 <?php
-//session_start();
-include '../../controllers/topsis.php';
+session_start();
+include 'controllers/topsis.php';
 $db = new topsis();
 $h = $db->kriteria();
 ?>
