@@ -1,7 +1,7 @@
 <?php
 include '../../controllers/topsis.php';
 $db = new topsis();
-$h = $db->kegiatan();
+$h = $db->kriteria();
 ?>
 
 <div class="box-header">
@@ -13,7 +13,7 @@ $h = $db->kegiatan();
 <tr>
 <th rowspan="2">No</th>
 <th rowspan="2">Nama</th>
-<th colspan="<?php echo $h; ?>">kegiatan</th>
+<th colspan="<?php echo $h; ?>">kriteria</th>
 </tr>
 <tr>
 <?php
@@ -43,12 +43,12 @@ while($da=mysql_fetch_assoc($a)){
 			$n=mysql_query("select * from nilai_matrik where id_peserta='$idalt'");
 	
 		while($dn=mysql_fetch_assoc($n)){
-			$idk=$dn['id_kegiatan'];
+			$idk=$dn['id_kriteria'];
 			
 			//nilai kuadrat
 			
 			$nilai_kuadrat=0;
-			$k=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
+			$k=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
 			while($dkuadrat=mysql_fetch_assoc($k)){
 				$nilai_kuadrat=$nilai_kuadrat+($dkuadrat['nilai']*$dkuadrat['nilai']);
 			}	

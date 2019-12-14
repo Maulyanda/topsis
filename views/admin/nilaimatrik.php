@@ -1,7 +1,7 @@
 <h1>Nilai peserta</h1>
 <ul class="nav nav-tabs">
   
-  <li class="active" ><a href="index.php?a=kegiatan&k=kegiatan">Isi Nilai Peserta</a></li>
+  <li class="active" ><a href="index.php?a=kriteria&k=kriteria">Isi Nilai Peserta</a></li>
   
 </ul>
 <div class="box-header">
@@ -33,8 +33,8 @@
 <div class="form-group">
 	<?php
 		$i=1;
-		$alt=mysql_query("select * from kegiatan");
-		//hitung jml kegiatan		
+		$alt=mysql_query("select * from kriteria");
+		//hitung jml kriteria		
 		$jml_krit=mysql_num_rows($alt);
 		while($dalt=mysql_fetch_assoc($alt)){
 	?>
@@ -42,8 +42,8 @@
 	<table   align="left">
 		<tr>
 		<td width="200" >
-			<label ><?php echo $dalt['judul_kegiatan']; ?></label>
-			<input type="hidden" name="id_kegiatan<?php echo $i; ?>" value="<?php echo $dalt['id_kegiatan']; ?>" />
+			<label ><?php echo $dalt['kriteria']; ?></label>
+			<input type="hidden" name="id_kriteria<?php echo $i; ?>" value="<?php echo $dalt['id_kriteria']; ?>" />
 		</td>					
 		<div class="col-md-8">
 		<td width="80">					
@@ -81,7 +81,7 @@
 						
 </form>						
 <?php
-$b=mysql_query("select * from kegiatan");
+$b=mysql_query("select * from kriteria");
 $c=mysql_fetch_assoc($b);
 
 if(isset($_POST['simpan'])){
@@ -97,11 +97,11 @@ if($cek_l>0){
 }
 
 for($n=1;$n<=$jml_krit;$n++){
-	$id_k=$_POST['id_kegiatan'.$o];
+	$id_k=$_POST['id_kriteria'.$o];
 	 $nilai_k=$_POST['nilai'.$o];
 	
 	
-	$m=mysql_query("insert into nilai_matrik (id_peserta,id_kegiatan,nilai) values('$_POST[id_alt]','$id_k','$nilai_k')");
+	$m=mysql_query("insert into nilai_matrik (id_peserta,id_kriteria,nilai) values('$_POST[id_alt]','$id_k','$nilai_k')");
 	
 	$o++;
 }

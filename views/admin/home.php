@@ -1,13 +1,10 @@
 <?php
-session_start();
-include 'controllers/topsis.php';
+//session_start();
+include '../../controllers/topsis.php';
 $db = new topsis();
 $h = $db->kriteria();
 ?>
 
-<div class="box-header">
-    <h3 class="box-title " >Nilai Preferensi</h3>
-</div>
 
 <table class="table table-bordered table-responsive">
 <thead>
@@ -122,3 +119,4 @@ echo "</tr>";
 
 </tbody>
 </table>
+</div>

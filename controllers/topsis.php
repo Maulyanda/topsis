@@ -12,8 +12,8 @@ class topsis{
 		mysql_select_db($this->db);
     }
     
-    function kegiatan(){
-		$data = mysql_query("select * from kegiatan");
+    function kriteria(){
+		$data = mysql_query("select * from kriteria");
 		$d = mysql_num_rows($data);
 		return $d;
     }

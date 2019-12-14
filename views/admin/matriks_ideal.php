@@ -1,7 +1,7 @@
 <?php
 include '../../controllers/topsis.php';
 $db = new topsis();
-$h = $db->kegiatan();
+$h = $db->kriteria();
 ?>
 
 <div class="box-header">
@@ -11,14 +11,14 @@ $h = $db->kegiatan();
 <table class="table table-bordered table-responsive">
 <thead>
 <tr>
-<th colspan="<?php echo $h; ?>">kegiatan</th>
+<th colspan="<?php echo $h; ?>">kriteria</th>
 </tr>
 <tr>
 <?php
-$hk=mysql_query("select id_kegiatan from kegiatan");
+$hk=mysql_query("select id_kriteria from kriteria");
 while($dhk=mysql_fetch_assoc($hk)){
 
-	echo"<th>$dhk[id_kegiatan]</th>";
+	echo"<th>$dhk[id_kriteria]</th>";
 }
 ?>
 </tr>
@@ -35,28 +35,28 @@ for($n=1;$n<=$h;$n++){
 <tbody>
 <?php
 $i=0;
-$a=mysql_query("select * from kegiatan");
+$a=mysql_query("select * from kriteria");
 echo "<tr>";
 while($da=mysql_fetch_assoc($a)){
 
 	
 		
-		$idalt=$da['id_kegiatan'];
+		$idalt=$da['id_kriteria'];
 	
 		//ambil nilai
 			
-			$n=mysql_query("select * from nilai_matrik where id_kegiatan='$idalt'");
+			$n=mysql_query("select * from nilai_matrik where id_kriteria='$idalt'");
 		
 		$c=0;
 		$ymax=array();
 		while($dn=mysql_fetch_assoc($n)){
-			$idk=$dn['id_kegiatan'];
+			$idk=$dn['id_kriteria'];
 			
 			
 			//nilai kuadrat
 			
 			$nilai_kuadrat=0;
-			$k=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
+			$k=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
 			while($dkuadrat=mysql_fetch_assoc($k)){
 				$nilai_kuadrat=$nilai_kuadrat+($dkuadrat['nilai']*$dkuadrat['nilai']);
 			}
@@ -64,18 +64,18 @@ while($da=mysql_fetch_assoc($a)){
 			//hitung jml peserta
 			$jml_peserta=mysql_query("select * from peserta");
 			$jml_a=mysql_num_rows($jml_peserta);	
-			//nilai bobot kegiatan (rata")
+			//nilai bobot kriteria (rata")
 			$bobot=0;
 			$tnilai=0;
 			
-			$k2=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
+			$k2=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
 			while($dbobot=mysql_fetch_assoc($k2)){
 				$tnilai=$tnilai+$dbobot['nilai'];
 			}	
 			 $bobot=$tnilai/$jml_a;
 			
 			//nilai bobot input
-			$b2=mysql_query("select * from kegiatan where id_kegiatan='$idk'");
+			$b2=mysql_query("select * from kriteria where id_kriteria='$idk'");
 			$nbot=mysql_fetch_assoc($b2);
 			$bot=$nbot['bobot'];
 			
@@ -106,14 +106,14 @@ echo "</tr>";
 <table class="table table-bordered table-responsive">
 <thead>
 <tr>
-<th colspan="<?php echo $h; ?>">kegiatan</th>
+<th colspan="<?php echo $h; ?>">kriteria</th>
 </tr>
 <tr>
 <?php
-$hk=mysql_query("select id_kegiatan from kegiatan");
+$hk=mysql_query("select id_kriteria from kriteria");
 while($dhk=mysql_fetch_assoc($hk)){
 
-	echo"<th>$dhk[id_kegiatan]</th>";
+	echo"<th>$dhk[id_kriteria]</th>";
 }
 ?>
 </tr>
@@ -130,28 +130,28 @@ for($n=1;$n<=$h;$n++){
 <tbody>
 <?php
 $i=0;
-$a=mysql_query("select * from kegiatan");
+$a=mysql_query("select * from kriteria");
 echo "<tr>";
 while($da=mysql_fetch_assoc($a)){
 
 	
 		
-		$idalt=$da['id_kegiatan'];
+		$idalt=$da['id_kriteria'];
 	
 		//ambil nilai
 			
-			$n=mysql_query("select * from nilai_matrik where id_kegiatan='$idalt'");
+			$n=mysql_query("select * from nilai_matrik where id_kriteria='$idalt'");
 		
 		$c=0;
 		$ymax=array();
 		while($dn=mysql_fetch_assoc($n)){
-			$idk=$dn['id_kegiatan'];
+			$idk=$dn['id_kriteria'];
 			
 			
 			//nilai kuadrat
 			
 			$nilai_kuadrat=0;
-			$k=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
+			$k=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
 			while($dkuadrat=mysql_fetch_assoc($k)){
 				$nilai_kuadrat=$nilai_kuadrat+($dkuadrat['nilai']*$dkuadrat['nilai']);
 			}
@@ -159,18 +159,18 @@ while($da=mysql_fetch_assoc($a)){
 			//hitung jml peserta
 			$jml_peserta=mysql_query("select * from peserta");
 			$jml_a=mysql_num_rows($jml_peserta);	
-			//nilai bobot kegiatan (rata")
+			//nilai bobot kriteria (rata")
 			$bobot=0;
 			$tnilai=0;
 			
-			$k2=mysql_query("select * from nilai_matrik where id_kegiatan='$idk' ");
+			$k2=mysql_query("select * from nilai_matrik where id_kriteria='$idk' ");
 			while($dbobot=mysql_fetch_assoc($k2)){
 				$tnilai=$tnilai+$dbobot['nilai'];
 			}	
 			 $bobot=$tnilai/$jml_a;
 			
 			//nilai bobot input
-			$b2=mysql_query("select * from kegiatan where id_kegiatan='$idk'");
+			$b2=mysql_query("select * from kriteria where id_kriteria='$idk'");
 			$nbot=mysql_fetch_assoc($b2);
 			$bot=$nbot['bobot'];
 			

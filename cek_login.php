@@ -12,9 +12,9 @@ if($cek > 0){
 	session_start();
 	$_SESSION['username'] = $username;
 	$_SESSION['status'] = "login";
-	header("location:views/admin/index.php");
+	header("location:views/admin/?a=home");
 }else{
-	header("location:index.php");	
+	header("location:login.php?pesan=gagal");
 }
  
 ?>

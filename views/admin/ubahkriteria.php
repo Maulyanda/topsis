@@ -2,7 +2,7 @@
 include '../../controllers/topsis.php';
 $db = new topsis();
 
-$query = "SELECT max(id_kegiatan) as idMaks FROM kegiatan";
+$query = "SELECT max(id_kriteria) as idMaks FROM kriteria";
 $hasil = mysql_query($query);
 $data  = mysql_fetch_array($hasil);
 $nim = $data['idMaks'];
@@ -18,33 +18,22 @@ $char = "kr";
 $IDbaru = $char . sprintf("%03s", $noUrut);
 
 //ambil data \
-$s=mysql_query("select * from kegiatan where id_kegiatan='$_GET[id]'");
+$s=mysql_query("select * from kriteria where id_kriteria='$_GET[id]'");
 $d=mysql_fetch_assoc($s);
 
 
 ?>
 <div class="box-header">
-    <h3 class="box-title">Ubah kegiatan</h3>
+    <h3 class="box-title">Ubah kriteria</h3>
 </div>
 
 <div class="box-body pad">
  <form action="" method="POST">
  <label>Kode</label>
- <input type="text" name="id_kegiatan" class="form-control" value="<?php echo $d['id_kegiatan']; ?>" readonly>
+ <input type="text" name="id_kriteria" class="form-control" value="<?php echo $d['id_kriteria']; ?>" readonly>
  <br />
- <label>Judul</label>
- <input type="text" name="judul_kegiatan" class="form-control"  placeholder="Masukkan judul kegiatan" value="<?php echo $d['judul_kegiatan']; ?>" >
- <br />
- <label>Kategori</label>
- <select name="kategori_kegiatan" class="form-control">
- 	<option value="<?php echo $d['kategori_kegiatan']; ?>"><?php echo $d['kategori_kegiatan']; ?></option>
-	<option value="Coaching & Conselling">Coaching & Conselling</option>
-	<option value="Course">Course</option>
-	<option value="Diklat">Diklat</option>
-	<option value="E-learning">E-learning</option>
-	<option value="Training">Training</option>
-	<option value="Workshop">Workshop</option>
- </select>
+ <label>Kriteria</label>
+ <input type="text" name="kriteria" class="form-control"  placeholder="Masukkan kriteria" value="<?php echo $d['kriteria']; ?>" >
  <br />
  <label>Bobot</label>
  <input type="text" name="bobot" class="form-control" placeholder="Bobot" value="<?php echo $d['bobot']; ?>">
@@ -64,10 +53,10 @@ $d=mysql_fetch_assoc($s);
  <label>Poin 5</label>
  <input type="text" name="poin5" class="form-control" placeholder="Masukkan poin" value="<?php echo $d['poin5']; ?>">
  <br />
- <label>Sifat kegiatan</label>
+ <label>Sifat kriteria</label>
  <select name="sifat" class="form-control">
 	<option value="<?php echo $d['sifat']; ?>"><?php echo $d['sifat']; ?></option>
-	<option value="free">Free</option>
+	<option value="benefit">Benefit</option>
 	<option value="cost">Cost</option>
  </select>
  <br />
@@ -77,10 +66,10 @@ $d=mysql_fetch_assoc($s);
 </div>
 <?php
 if(isset($_POST['ubah'])){
-	$s=mysql_query("update kegiatan set judul_kegiatan='$_POST[judul_kegiatan]', kategori_kegiatan='$_POST[kategori_kegiatan]', bobot='$_POST[bobot]', poin1='$_POST[poin1]',poin2='$_POST[poin2]', poin3='$_POST[poin3]', poin4='$_POST[poin4]', poin5='$_POST[poin5]', sifat='$_POST[sifat]' where id_kegiatan='$_POST[id_kegiatan]'");
+	$s=mysql_query("update kriteria set kriteria='$_POST[kriteria]', bobot='$_POST[bobot]', poin1='$_POST[poin1]',poin2='$_POST[poin2]', poin3='$_POST[poin3]', poin4='$_POST[poin4]', poin5='$_POST[poin5]', sifat='$_POST[sifat]' where id_kriteria='$_POST[id_kriteria]'");
 	
 	if($s){
-		echo "<script>alert('Diubah'); window.open('index.php?a=kegiatan&k=kegiatan','_self');</script>";
+		echo "<script>alert('Diubah'); window.open('index.php?a=kriteria&k=kriteria','_self');</script>";
 	}
 }
 

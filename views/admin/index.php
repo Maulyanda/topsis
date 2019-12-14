@@ -16,7 +16,7 @@ session_start();
  
 // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
 if($_SESSION['status'] !="login"){
-	header("location:../index.php");
+	header("location:../../login.php?pesan=belum_login");
 }
  
 // menampilkan pesan selamat datang
@@ -34,7 +34,7 @@ if($_SESSION['status'] !="login"){
   </div>
 </nav>
  <?php
-if(@$_GET['a']=='kegiatan'){
+if(@$_GET['a']=='kriteria'){
 	$active1='class="active"';
 	$active2='';
 	$active3='';
@@ -62,34 +62,32 @@ if(@$_GET['a']=='kegiatan'){
 }	
 
 ?> 
-  
+
 <!-- TAB KIRI -->
 <div class="col-sm-2">
 <ul class="nav nav-pills nav-stacked">
-  <li class="active"><a href="index.php">Home</a></li> 
-  <li <?php echo $active1 ?>><a href="?a=kegiatan&k=kegiatan" >Kegiatan</a></li>
+  <li class="active"><a href="?a=home">Home</a></li> 
+  <li <?php echo $active1 ?>><a href="?a=kriteria&k=kriteria" >kriteria</a></li>
   <li <?php echo $active2 ?>><a href="?a=peserta&k=peserta" >Peserta</a></li>
   <li <?php echo $active3 ?>><a href="?a=nilaimatrik" >Nilai Peserta</a></li>
   <li <?php echo $active4 ?>><a href="?a=hasiltopsis&k=nilai_matriks">Hasil Topsis</a></li>
 </ul>  
 </div>
 <!-- /TAB KIRI -->  
-  
-  
 
   <div class="col-sm-10">
  <?php
- 
- if(@$_GET['a']=='kegiatan'){
-	include ("kegiatan.php");
- }else if(@$_GET['a']=='peserta'){
-	include ("peserta.php");
- }else if(@$_GET['a']=='nilaimatrik'){
-	include ("nilaimatrik.php");
- }else if(@$_GET['a']=='hasiltopsis'){
-	include ("hasiltopsis.php");
+  if(@$_GET['a']=='home'){
+		include ("home.php");
+	}else if(@$_GET['a']=='kriteria'){
+		include ("kriteria.php");
+ 	}else if(@$_GET['a']=='peserta'){
+		include ("peserta.php");
+ 	}else if(@$_GET['a']=='nilaimatrik'){
+		include ("nilaimatrik.php");
+ 	}else if(@$_GET['a']=='hasiltopsis'){
+		include ("hasiltopsis.php");
  }
-
  ?>
 
 </div>

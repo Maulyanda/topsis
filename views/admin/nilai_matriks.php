@@ -1,7 +1,7 @@
 <?php
 include '../../controllers/topsis.php';
 $db = new topsis();
-$h = $db->kegiatan();
+$h = $db->kriteria();
 ?>
 
 <div class="box-header">
@@ -13,7 +13,7 @@ $h = $db->kegiatan();
 <tr>
 <th rowspan="2">No</th>
 <th rowspan="2">Nama</th>
-<th colspan="<?php echo $h; ?>">kegiatan</th>
+<th colspan="<?php echo $h; ?>">kriteria</th>
 </tr>
 <tr>
 <?php
