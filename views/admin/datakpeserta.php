@@ -8,6 +8,7 @@
 <th>Id peserta</th>
 <th>Nama peserta</th>
 <th>Judul Kegiatan</th>
+<th>Tanggal</th>
 <th>Pilihan</th>
 </tr>
 </thead>
@@ -23,6 +24,7 @@ while($d=mysql_fetch_assoc($s)){
 <td><?php echo $d['id_peserta']; ?></td>
 <td><?php echo $d['nm_peserta']; ?></td>
 <td><?php echo $d['judul']; ?></td>
+<td><?php echo $d['tanggal']; ?></td>
 <td>
 <a href="?a=peserta&k=ubaha&id=<?php echo $d['id_peserta']; ?>" class="btn btn-warning">Ubah</a>
 <a href="hapuspeserta.php?id=<?php echo $d['id_peserta']; ?>" class="btn btn-danger">Hapus</a>

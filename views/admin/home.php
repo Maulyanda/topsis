@@ -13,6 +13,7 @@ $h = $db->kriteria();
 <th >Nama</th>
 <th >V<sub>i</sub></th>
 <th>Judul Kegiatan</th>
+<th>Tanggal Kegiatan</th>
 </tr>
 
 </thead>
@@ -86,18 +87,22 @@ foreach($_SESSION['dplus'] as $key=>$dxmin){
     
     //judul peserta
 	$judul=mysql_query("select * from peserta where id_peserta='$id_alt'");
-    $jdl=mysql_fetch_assoc($judul);
+	$jdl=mysql_fetch_assoc($judul);
+	
+	//tanggal kegiatan peserta
+	$tanggal=mysql_query("select * from peserta where id_peserta='$id_alt'");
+    $tgl=mysql_fetch_assoc($tanggal);
     
 	$nilaid=$jarakm/($jarakm+$dxmin);
 	
 		$nilai=round($nilaid,4);
 	
-		
 	
 	//simpan ke tabel nilai preferensi
     $nm=$nm['nm_peserta'];
-    $jdl=$jdl['judul'];
-	$sql2=mysql_query("insert into nilai_preferensi (nm_peserta,nilai,judul) values('$nm','$nilai','$jdl')");
+	$jdl=$jdl['judul'];
+	$tgl=$tgl['tanggal'];
+	$sql2=mysql_query("insert into nilai_preferensi (nm_peserta,nilai,judul,tanggal) values('$nm','$nilai','$jdl','$tgl')");
 		
 	
 }
@@ -110,7 +115,8 @@ foreach($_SESSION['dplus'] as $key=>$dxmin){
 		<td>".$i."</td>
 		<td>$data3[nm_peserta]</td>
         <td>$data3[nilai]</td>
-        <td>$data3[judul]</td>
+		<td>$data3[judul]</td>
+		<td>$data3[tanggal]</td>
 		</tr>";
 		
 		$i++;
