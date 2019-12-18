@@ -22,9 +22,6 @@ class topsis{
 		$data = mysql_query("select * from peserta");
 		return $data;
     }
-    
-
- 
 } 
  
 ?>

@@ -5,18 +5,58 @@ $db = new topsis();
 $h = $db->kriteria();
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#myYear").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+
+<label>Search</label>
+<input id="myInput" type="text" placeholder="Search.." class="form-control">
+
+<br>
+ 
+<label>Filter berdasarkan Tahun</label>
+<select id="myYear" class="form-control">
+	<option value=''>- Pilih -</option>
+	<option value="2020">2020</option>
+	<option value="2019">2019</option>
+	<option value="2018">2018</option>
+	<option value="2017">2017</option>
+ 	<option value="2016">2016</option>
+</select>
+<br><br>
 
 <table class="table table-bordered table-responsive">
 <thead>
 <tr>
-<th >Nomor</th>
+<!-- <th >Nomor</th> -->
 <th >Nama</th>
 <th >V<sub>i</sub></th>
 <th>Judul Kegiatan</th>
+<th>Tanggal Kegiatan</th>
 </tr>
 
 </thead>
-<tbody>
+<tbody id="myTable">
 <?php
 $i=1;
 $a=mysql_query("select * from peserta");
@@ -86,18 +126,22 @@ foreach($_SESSION['dplus'] as $key=>$dxmin){
     
     //judul peserta
 	$judul=mysql_query("select * from peserta where id_peserta='$id_alt'");
-    $jdl=mysql_fetch_assoc($judul);
+	$jdl=mysql_fetch_assoc($judul);
+	
+	//tanggal kegiatan peserta
+	$tanggal=mysql_query("select * from peserta where id_peserta='$id_alt'");
+    $tgl=mysql_fetch_assoc($tanggal);
     
 	$nilaid=$jarakm/($jarakm+$dxmin);
 	
 		$nilai=round($nilaid,4);
 	
-		
 	
 	//simpan ke tabel nilai preferensi
     $nm=$nm['nm_peserta'];
-    $jdl=$jdl['judul'];
-	$sql2=mysql_query("insert into nilai_preferensi (nm_peserta,nilai,judul) values('$nm','$nilai','$jdl')");
+	$jdl=$jdl['judul'];
+	$tgl=$tgl['tanggal'];
+	$sql2=mysql_query("insert into nilai_preferensi (nm_peserta,nilai,judul,tanggal) values('$nm','$nilai','$jdl','$tgl')");
 		
 	
 }
@@ -107,10 +151,10 @@ foreach($_SESSION['dplus'] as $key=>$dxmin){
 	$sql3=mysql_query("select * from nilai_preferensi order by nilai Desc");
 	while($data3=mysql_fetch_assoc($sql3)){
 		echo "<tr>
-		<td>".$i."</td>
 		<td>$data3[nm_peserta]</td>
         <td>$data3[nilai]</td>
-        <td>$data3[judul]</td>
+		<td>$data3[judul]</td>
+		<td>$data3[tanggal]</td>
 		</tr>";
 		
 		$i++;

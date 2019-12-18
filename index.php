@@ -32,7 +32,6 @@ if(@$_GET['a']=='hasiltopsis'){
 	$active3='';
 	$active4='';
 }	
-
 ?> 
   
 <!-- TAB KIRI -->
@@ -44,9 +43,7 @@ if(@$_GET['a']=='hasiltopsis'){
 </div>
 <!-- /TAB KIRI -->  
   
-  
-
-  <div class="col-sm-10">
+<div class="col-sm-10">
  <?php
   if(@$_GET['a']=='home'){
     include ("views/home.php");
@@ -55,7 +52,6 @@ if(@$_GET['a']=='hasiltopsis'){
   }
 
  ?>
-
 </div>
 
 </body>

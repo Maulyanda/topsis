@@ -52,6 +52,5 @@
 			return false;
 		}
 	}
- 
 </script>
 </html>
