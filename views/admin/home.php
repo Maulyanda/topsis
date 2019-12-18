@@ -5,6 +5,11 @@ $db = new topsis();
 $h = $db->kriteria();
 ?>
 
+<head>
+	<title>PT. PEGADAIAN</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icons/favicon.ico"/>
+</head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){

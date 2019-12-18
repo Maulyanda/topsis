@@ -1,3 +1,9 @@
+<head>
+	<title>PT. PEGADAIAN</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icons/favicon.ico"/>
+</head>
+
+
 <div class="box-header">
     <h3 class="box-title">Data peserta</h3>
 </div>

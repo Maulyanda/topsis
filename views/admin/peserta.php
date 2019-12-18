@@ -1,3 +1,8 @@
+<head>
+	<title>PT. PEGADAIAN</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icons/favicon.ico"/>
+</head>
+
 <h1>Peserta</h1>
 <ul class="nav nav-tabs">
   <?php

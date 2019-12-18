@@ -20,9 +20,13 @@ $IDbaru = $char . sprintf("%03s", $noUrut);
 //ambil data \
 $s=mysql_query("select * from kriteria where id_kriteria='$_GET[id]'");
 $d=mysql_fetch_assoc($s);
-
-
 ?>
+
+<head>
+	<title>PT. PEGADAIAN</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icons/favicon.ico"/>
+</head>
+
 <div class="box-header">
     <h3 class="box-title">Ubah kriteria</h3>
 </div>

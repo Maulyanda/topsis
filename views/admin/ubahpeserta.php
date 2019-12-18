@@ -5,6 +5,12 @@ $db = new topsis();
 $s=mysql_query("select * from peserta where id_peserta='$_GET[id]'");
 $d=mysql_fetch_assoc($s);
 ?>
+
+<head>
+	<title>PT. PEGADAIAN</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icons/favicon.ico"/>
+</head>
+
 <div class="box-header">
     <h3 class="box-title">Ubah peserta</h3>
 </div>

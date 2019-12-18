@@ -18,6 +18,12 @@ $char = "kr";
 $IDbaru = $char . sprintf("%03s", $noUrut);
 
 ?>
+
+<head>
+	<title>PT. PEGADAIAN</title>
+    <link rel="icon" type="image/png" href="../../assets/images/icons/favicon.ico"/>
+</head>
+
 <div class="box-header">
     <h3 class="box-title">Tambah kriteria</h3>
 </div>
