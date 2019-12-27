@@ -13,7 +13,6 @@
     <h3 class="box-title">Tambah Nilai Peserta</h3>
 </div>
 
-
 <form method="POST" action="">
 <div class="form-group">
 	<label class="control-label col-lg-2">Peserta</label>

@@ -93,13 +93,13 @@ if(@$_GET['a']=='kriteria'){
   if(@$_GET['a']=='home'){
 		include ("home.php");
 	}else if(@$_GET['a']=='kriteria'){
-		include ("kriteria.php");
+		include ("kriteria/kriteria.php");
  	}else if(@$_GET['a']=='peserta'){
-		include ("peserta.php");
+		include ("peserta/peserta.php");
  	}else if(@$_GET['a']=='nilaimatrik'){
-		include ("nilaimatrik.php");
+		include ("matriks/nilaimatrik.php");
  	}else if(@$_GET['a']=='hasiltopsis'){
-		include ("hasiltopsis.php");
+		include ("penilaian/hasiltopsis.php");
 	}else if(@$_GET['a']=='user'){
 		include ("user/user.php");
  }

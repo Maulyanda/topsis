@@ -28,6 +28,6 @@ if(@$_GET['a']=='peserta' and @$_GET['k']=='peserta'){
  }else if(@$_GET['k']=='tambah'){
 	include ("tambahpeserta.php");
  }else if(@$_GET['k']=='ubaha'){
-	include ("ubahpeserta.php");
+	include ("peserta/ubahpeserta.php");
  }
  ?>

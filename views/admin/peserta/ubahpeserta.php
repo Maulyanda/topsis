@@ -1,9 +1,6 @@
 <?php
 include '../../controllers/topsis.php';
 $db = new topsis();
-
-$s=mysql_query("select * from peserta where id_peserta='$_GET[id]'");
-$d=mysql_fetch_assoc($s);
 ?>
 
 <head>
@@ -37,11 +34,14 @@ $d=mysql_fetch_assoc($s);
 
 <div class="box-body pad">
  <form action="" method="POST">
+ <?php
+    foreach($db->edit_peserta($_GET['id']) as $d){
+ ?>
  <label>ID</label>
  	<input type="text" name="id_peserta" class="form-control" value="<?php echo $d['id_peserta']; ?>" readonly>
  <br />
  <label>Nama</label>
- 	<input type="text" name="nama_peserta" class="form-control"  placeholder="Masukkan nama peserta" value="<?php echo $d['nm_peserta']; ?>" required>
+ 	<input type="text" name="nm_peserta" class="form-control"  placeholder="Masukkan nama peserta" value="<?php echo $d['nm_peserta']; ?>" required>
  <br />
  <label>Judul Kegiatan</label>
  	<input type="text" name="judul" class="form-control"  placeholder="Masukkan Judul Kegiatan" value="<?php echo $d['judul']; ?>" required>
@@ -51,13 +51,15 @@ $d=mysql_fetch_assoc($s);
  <br />
  <input type="submit" name="ubah" value="Ubah" class="btn btn-primary">
  <br />
+ <?php } ?>
  </form>
 </div>
 <?php
 if(isset($_POST['ubah'])){
-	$s=mysql_query("update peserta set nm_peserta='$_POST[nama_peserta]', judul='$_POST[judul]', tanggal='$_POST[tanggal]' where id_peserta='$_POST[id_peserta]'");
+	$db->update_peserta($_POST['nm_peserta'], $_POST['judul'], $_POST['tanggal']);
+	//$s=mysql_query("update peserta set nm_peserta='$_POST[nm_peserta]', judul='$_POST[judul]', tanggal='$_POST[tanggal]' where id_peserta='$_POST[id_peserta]'");
 	
-	if($s){
+	if($db){
 		echo "<script>alert('Diubah'); window.open('index.php?a=peserta&k=peserta','_self');</script>";
 	}
 }

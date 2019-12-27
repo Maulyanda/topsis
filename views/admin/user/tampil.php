@@ -1,7 +1,7 @@
-<?php 
-include '../../controllers/topsis.php';
-$db = new topsis();
-?>
+	<?php 
+	include '../../controllers/topsis.php';
+	$db = new topsis();
+	?>
 
     <head>
         <title>PT. PEGADAIAN</title>
@@ -26,7 +26,7 @@ $db = new topsis();
 
 	<?php
 	$no = 1;
-	foreach($db->tampil_data() as $x){
+	foreach($db->tampil_data_user() as $x){
 	?>
 	<tr>
 		<td><?php echo $no++; ?></td>

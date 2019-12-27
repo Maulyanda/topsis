@@ -53,7 +53,7 @@
 			<input type="text" name="id_peserta" class="form-control" value="<?php echo $IDbaru; ?>" readonly>
 		<br />
 		<label>Nama</label>
-			<input type="text" name="nama_peserta" class="form-control" placeholder="Masukkan nama peserta" required>
+			<input type="text" name="nm_peserta" class="form-control" placeholder="Masukkan nama peserta" required>
 		<br />
 		<label>Judul Kegiatan</label>
 			<input type="text" name="judul" class="form-control" placeholder="Masukkan judul kegiatan" required>
@@ -67,9 +67,10 @@
 	</div>
 	<?php
 	if(isset($_POST['simpan'])){
-		$s=mysql_query("insert into peserta (id_peserta,nm_peserta,judul,tanggal) values('$_POST[id_peserta]','$_POST[nama_peserta]','$_POST[judul]','$_POST[tanggal]')");
+		$db->tambah_peserta($_POST['id_peserta'], $_POST['nm_peserta'], $_POST['judul'], $_POST['tanggal']);
+		//$s=mysql_query("insert into peserta (id_peserta,nm_peserta,judul,tanggal) values('$_POST[id_peserta]','$_POST[nm_peserta]','$_POST[judul]','$_POST[tanggal]')");
 		
-		if($s){
+		if($db){
 			echo "<script>alert('Disimpan'); window.open('index.php?a=peserta&k=peserta','_self');</script>";
 		}
 	}

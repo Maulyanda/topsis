@@ -1,3 +1,8 @@
+<?php 
+include '../../controllers/topsis.php';
+$db = new topsis();
+?>
+
 <head>
 	<title>PT. PEGADAIAN</title>
     <link rel="icon" type="image/png" href="../../assets/images/icons/favicon.ico"/>
@@ -24,11 +29,7 @@
         </thead>
         <tbody>
             <?php
-            include '../../controllers/topsis.php';
-            $db = new topsis();
-
-            $s=mysql_query("select * from kriteria order by id_kriteria ASC");
-            while($d=mysql_fetch_assoc($s)){
+            foreach($db->tampil_data_kriteria() as $d){
             ?>
             <tr>
                 <td><?php echo $d['id_kriteria']; ?></td>
@@ -42,12 +43,10 @@
                 <td><?php echo $d['sifat']; ?></td>
                 <td>
                 <a href="?a=kriteria&k=ubahk&id=<?php echo $d['id_kriteria']; ?>" class="btn btn-warning">Ubah</a>
-                <a href="hapus.php?id=<?php echo $d['id_kriteria']; ?>" class="btn btn-danger">Hapus</a>
+                <a href="kriteria/hapus.php?id=<?php echo $d['id_kriteria']; ?>" class="btn btn-danger">Hapus</a>
                 </td>
             </tr>
-            <?php
-            }
-            ?>
+            <?php } ?>
         </tbody>
     </table>
 </div>

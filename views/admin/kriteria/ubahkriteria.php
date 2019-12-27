@@ -1,25 +1,6 @@
 <?php
 include '../../controllers/topsis.php';
 $db = new topsis();
-
-$query = "SELECT max(id_kriteria) as idMaks FROM kriteria";
-$hasil = mysql_query($query);
-$data  = mysql_fetch_array($hasil);
-$nim = $data['idMaks'];
-
-//mengatur 6 karakter sebagai jumalh karakter yang tetap
-//mengatur 3 karakter untuk jumlah karakter yang berubah-ubah
-$noUrut = (int) substr($nim, 2, 3);
-$noUrut++;
-
-//menjadikan 201353 sebagai 6 karakter yang tetap
-$char = "kr";
-//%03s untuk mengatur 3 karakter di belakang 201353
-$IDbaru = $char . sprintf("%03s", $noUrut);
-
-//ambil data \
-$s=mysql_query("select * from kriteria where id_kriteria='$_GET[id]'");
-$d=mysql_fetch_assoc($s);
 ?>
 
 <head>
@@ -33,6 +14,9 @@ $d=mysql_fetch_assoc($s);
 
 <div class="box-body pad">
  <form action="" method="POST">
+ <?php
+    foreach($db->edit_kriteria($_GET['id']) as $d){
+ ?>
  <label>Kode</label>
  <input type="text" name="id_kriteria" class="form-control" value="<?php echo $d['id_kriteria']; ?>" readonly>
  <br />
@@ -66,13 +50,15 @@ $d=mysql_fetch_assoc($s);
  <br />
  <input type="submit" name="ubah" value="Ubah" class="btn btn-primary">
  <br />
+ <?php } ?>
  </form>
 </div>
 <?php
 if(isset($_POST['ubah'])){
-	$s=mysql_query("update kriteria set kriteria='$_POST[kriteria]', bobot='$_POST[bobot]', poin1='$_POST[poin1]',poin2='$_POST[poin2]', poin3='$_POST[poin3]', poin4='$_POST[poin4]', poin5='$_POST[poin5]', sifat='$_POST[sifat]' where id_kriteria='$_POST[id_kriteria]'");
+	$db->update_kriteria($_POST['kriteria'], $_POST['bobot'], $_POST['poin1'], $_POST['poin2'], $_POST['poin3'], $_POST['poin4'], $_POST['poin5'], $_POST['sifat']);
+	//$s=mysql_query("update kriteria set kriteria='$_POST[kriteria]', bobot='$_POST[bobot]', poin1='$_POST[poin1]',poin2='$_POST[poin2]', poin3='$_POST[poin3]', poin4='$_POST[poin4]', poin5='$_POST[poin5]', sifat='$_POST[sifat]' where id_kriteria='$_POST[id_kriteria]'");
 	
-	if($s){
+	if($db){
 		echo "<script>alert('Diubah'); window.open('index.php?a=kriteria&k=kriteria','_self');</script>";
 	}
 }

@@ -66,9 +66,9 @@ $IDbaru = $char . sprintf("%03s", $noUrut);
 
 <?php
 if(isset($_POST['simpan'])){
-	$s=mysql_query("insert into kriteria (id_kriteria,kriteria,bobot,poin1,poin2,poin3,poin4,poin5,sifat) values ('$_POST[id_kriteria]','$_POST[kriteria]','$_POST[bobot]','$_POST[poin1]','$_POST[poin2]','$_POST[poin3]','$_POST[poin4]','$_POST[poin5]','$_POST[sifat]')");
+	$db->tambah_kriteria($_POST['id_kriteria'],$_POST['kriteria'],$_POST['bobot'],$_POST['poin1'],$_POST['poin2'],$_POST['poin3'],$_POST['poin4'],$_POST['poin5'],$_POST['sifat']);
 	
-	if($s){
+	if($db){
 		echo "<script>alert('Disimpan'); window.open('index.php?a=kriteria&k=kriteria','_self');</script>";
 	}
 }
