@@ -51,7 +51,6 @@ if(@$_GET['a']=='hasiltopsis'){
   }else if(@$_GET['a']=='hasiltopsis'){
 	  include ("views/hasiltopsis.php");
   }
-
  ?>
 </div>
 

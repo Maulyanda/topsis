@@ -40,26 +40,37 @@ if(@$_GET['a']=='kriteria'){
 	$active2='';
 	$active3='';
 	$active4='';
+	$active5='';
 }else if(@$_GET['a']=='peserta'){
 	$active1='';
 	$active2='class="active"';
 	$active3='';
 	$active4='';
+	$active5='';
 }else if(@$_GET['a']=='nilaimatrik'){
 	$active1='';
 	$active2='';
 	$active3='class="active"';
 	$active4='';
+	$active5='';
 }else if(@$_GET['a']=='hasiltopsis'){
 	$active1='';
 	$active2='';
 	$active3='';
 	$active4='class="active"';
+	$active5='';
+}else if(@$_GET['a']=='user'){
+	$active1='';
+	$active2='';
+	$active3='';
+	$active4='';
+	$active5='class="active"';
 }else{
 	$active1='';
 	$active2='';
 	$active3='';
 	$active4='';
+	$active5='';
 }	
 
 ?> 
@@ -68,10 +79,11 @@ if(@$_GET['a']=='kriteria'){
 <div class="col-sm-2">
 <ul class="nav nav-pills nav-stacked">
   <li class="active"><a href="?a=home">Home</a></li> 
-  <li <?php echo $active1 ?>><a href="?a=kriteria&k=kriteria" >kriteria</a></li>
-  <li <?php echo $active2 ?>><a href="?a=peserta&k=peserta" >Peserta</a></li>
-  <li <?php echo $active3 ?>><a href="?a=nilaimatrik" >Nilai Peserta</a></li>
+  <li <?php echo $active1 ?>><a href="?a=kriteria&k=kriteria">kriteria</a></li>
+  <li <?php echo $active2 ?>><a href="?a=peserta&k=peserta">Peserta</a></li>
+  <li <?php echo $active3 ?>><a href="?a=nilaimatrik">Nilai Peserta</a></li>
   <li <?php echo $active4 ?>><a href="?a=hasiltopsis&k=nilai_matriks">Hasil Topsis</a></li>
+  <li <?php echo $active5 ?>><a href="?a=user&k=user">User</a></li>
 </ul>  
 </div>
 <!-- /TAB KIRI -->  
@@ -88,6 +100,8 @@ if(@$_GET['a']=='kriteria'){
 		include ("nilaimatrik.php");
  	}else if(@$_GET['a']=='hasiltopsis'){
 		include ("hasiltopsis.php");
+	}else if(@$_GET['a']=='user'){
+		include ("user/user.php");
  }
  ?>
 
