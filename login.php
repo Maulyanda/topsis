@@ -58,11 +58,12 @@
 					</div>
 					
 					<div class="text-center w-full p-t-23">
-						<a href="index.php?a=home" class="txt1">
+						<a href="index.php?a=hasiltopsis&k=nilai_matriks" class="txt1">
 							KEMBALI
 						</a>
 					</div>
-
+					
+					<div class="text-center w-full p-t-23">
 					<?php 
 					if(isset($_GET['pesan'])){
 						if($_GET['pesan'] == "gagal"){
@@ -74,7 +75,7 @@
 						}
 					}
 					?>
-
+					</div>
 				</form>
 			</div>
 		</div>

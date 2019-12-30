@@ -1,12 +1,17 @@
 <?php 
- 
+
+#pendefinisian sebuah class dengan nama topsis.
 class topsis{
- 
+
+	#pendefinisian variabel class, atau dikenal dengan property. 
+	#Property tidak lain hanya variabel biasa yang berada di dalam class.
+
 	var $host = "localhost";
 	var $uname = "root";
 	var $pass = "";
 	var $db = "topsis";
- 
+
+	#function adalah method dari class.
 	function __construct(){
 		mysql_connect($this->host, $this->uname, $this->pass);
 		mysql_select_db($this->db);
